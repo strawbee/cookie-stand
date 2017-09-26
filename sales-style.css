@@ -5,58 +5,72 @@
 }
 
 body {
-  background: #ffd3e2;
+  color: #000;
+  background-color: #ffdad3;
   font-family: Raleway, sans-serif;
   font-weight: 100;
-  margin: auto;
-  text-align: center;
+  font-size: 0.9em;
+}
+
+#content {
+  position: fixed;
+  background: linear-gradient(#ffedcc, #ff9e8c);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
 }
 
 h1 {
+  color: #FFF;
+  font-size: 2em;
+  font-family: 'Days One', sans-serif;
+  font-weight: 100;
+  text-align: center;
   padding: 30px;
-  color: #ff216c;
-}
-
-h1:hover {
-  text-decoration: dotted underline;
-}
-
-ul {
-  list-style: inside circle;
-  font-weight: 900;
-  line-height: 1.4em;
-  margin: 15px;
-  padding: 15px;
-  float: left;
-  color: #84123a;
-  background: #ffeff4;
-  border: solid 1px #84123a;
-  border-radius: 10px;
+  text-shadow: 2px 2px 2px #d6925e;
 }
 
 table {
-  margin: 20px;
+  margin: auto;
+  max-width: 95%;
   border-collapse: collapse;
+  box-shadow: -2px -2px 2px #d6925e;
+}
+
+tr {
+  opacity: 0.8;
+}
+
+tr:hover {
+  opacity: 1.0;
+  cursor: default;
+}
+
+table#projectedSales th {
+    background-color: #d8653e;
+    color: #FFF;
+}
+table#projectedSales tr:nth-child(even) {
+    background-color: #e8a188;
+}
+table#projectedSales tr:nth-child(odd) {
+   background-color:#ffd5c6;
+}
+table#projectedSales tr:only-child {
+  background-color: #FFF;
 }
 
 th {
-  padding: 20px;
-  margin: 20px;
-  border: solid 1px #000;
+  padding: 15px;
+  border: solid 1px #b73922;
   font-weight: 900;
 }
 
 td {
   padding: 20px;
   margin: 20px;
-  border: solid 1px #000;
-  font-weight: 100;
-}
-
-ul:hover {
-  background: #FFF;
-}
-
-li {
+  border: solid 1px #b73922;
   font-weight: 100;
 }
