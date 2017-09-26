@@ -86,7 +86,7 @@ PatsSalmonCookiesStore.prototype.renderCookiesSold = function() {
   thPos.appendChild(thEl);
 })();
 
-// Generate Table Body
+// Generate Table Body - always call table body before the table footer
 locFirstAndPike.renderCookiesSold();
 locSeaTacAirport.renderCookiesSold();
 locSeattleCenter.renderCookiesSold();
@@ -121,16 +121,3 @@ locAlki.renderCookiesSold();
   tdEl.appendChild(tdTextNode);
   thTdPos.appendChild(tdEl);
 })();
-
-/*
-
-  <tfoot>
-    <tr>
-      <th>Totals</th>
-      <td>300</td>
-      <td>400</td>
-      ...
-    </tr>
-  </tfoot>
-</table>
-*/
