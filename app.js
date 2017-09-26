@@ -82,12 +82,14 @@ function calcCookiesSoldPerHr(objectName) {
   var ulEl, liEl, ulTextNode, liTextNode, ulPos, liPos, i, ulChild;
   var total = 0;
   var cookiesSoldPerHr = objectName.cookiesSoldPerHr;
+
   ulEl = document.createElement('ul');
   ulTextNode = document.createTextNode(objectName.name);
   ulEl.appendChild(ulTextNode);
   ulPos = document.getElementById(objectName.id);
   ulPos.appendChild(ulEl);
   ulChild = ulPos.lastChild;
+
   for (i in arrayOfHoursOpen) {
     cookiesSoldPerHr[i] = Math.round(objectName.avgCookiesPerSale * objectName.randomNumCustPerHr());
     liEl = document.createElement('li');
@@ -97,6 +99,7 @@ function calcCookiesSoldPerHr(objectName) {
     liPos.appendChild(liEl);
     total += cookiesSoldPerHr[i];
   }
+
   liEl = document.createElement('li');
   liTextNode = document.createTextNode('Total: ' + total);
   liEl.appendChild(liTextNode);
