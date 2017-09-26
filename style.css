@@ -16,6 +16,11 @@ p {
   margin-bottom: 15px;
 }
 
+a {
+  text-decoration: underline;
+  color: inherit;
+}
+
 .data {
   font-family: georgia, serif;
 }
@@ -120,14 +125,14 @@ header p {
 #about {
   background: #ad3535;
   color: #ffeae5;
-  padding: 80px 100px;
+  padding: 60px 100px;
 }
 
 #imageP {
   text-align: center;
 }
 
-#cookieimage {
+.cookieimage {
   display: inline;
   width: 23%;
   height: auto;
@@ -135,26 +140,62 @@ header p {
   border: solid 1px #FFF;
 }
 
-#cookieimage:hover {
+.cookieimage:hover {
   opacity: 1.0;
 }
 
 #locations {
   background: #ffc8bf;
   color: #aa2700;
-  padding: 80px 100px;
+  padding: 60px 100px;
+}
+
+#locationsP {
+  text-align: center;
+}
+
+.loc {
+  width: 45%;
+  margin: 10px;
+  padding: 20px 10px;
+  border: solid 1px #aa2700;
+  border-radius: 5px;
+  background: #ffdbd6;
+  text-align: center;
+  float: left;
+}
+
+.loc:hover {
+  background: #ffedea;
+}
+
+#locations::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 #contact {
   background: #FFF;
   color: #c94c30;
-  padding: 80px 100px;
+  padding: 60px 100px;
 }
 
 #testimonials {
   background: #ad3535;
   color: #ffeae5;
-  padding: 80px 100px;
+  padding: 60px 100px;
+}
+
+q {
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 1.7em;
+  color: #f2dcd7;
+}
+
+q:hover {
+  color: #ffeae5;
 }
 
 h2 {
@@ -163,6 +204,14 @@ h2 {
   font-family: Raleway;
   font-size: 2em;
   font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+h3 {
+  font-weight: 900;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
 }
 
 footer {
