@@ -79,7 +79,7 @@ var arrayOfHoursOpen = [
 ];
 
 function calcCookiesSoldPerHr(objectName) {
-  var ulEl, liEl, ulTextNode, liTextNode, ulPos, liPos, i;
+  var ulEl, liEl, ulTextNode, liTextNode, ulPos, liPos, i, ulChild;
   var total = 0;
   var cookiesSoldPerHr = objectName.cookiesSoldPerHr;
   ulEl = document.createElement('ul');
@@ -87,19 +87,20 @@ function calcCookiesSoldPerHr(objectName) {
   ulEl.appendChild(ulTextNode);
   ulPos = document.getElementById(objectName.id);
   ulPos.appendChild(ulEl);
+  ulChild = ulPos.lastChild;
   for (i in arrayOfHoursOpen) {
     cookiesSoldPerHr[i] = Math.round(objectName.avgCookiesPerSale * objectName.randomNumCustPerHr());
     liEl = document.createElement('li');
     liTextNode = document.createTextNode(arrayOfHoursOpen[i] + ': ' + cookiesSoldPerHr[i] + ' cookies');
     liEl.appendChild(liTextNode);
-    liPos = ulPos.lastChild;
+    liPos = ulChild;
     liPos.appendChild(liEl);
     total += cookiesSoldPerHr[i];
   }
   liEl = document.createElement('li');
   liTextNode = document.createTextNode('Total: ' + total);
   liEl.appendChild(liTextNode);
-  liPos = ulPos.lastChild;
+  liPos = ulChild;
   liPos.appendChild(liEl);
 };
 
