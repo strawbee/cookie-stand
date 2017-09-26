@@ -9,6 +9,7 @@ body {
   font-family: Raleway, sans-serif;
   font-weight: 100;
   margin: auto;
+  text-align: center;
 }
 
 h1 {
@@ -31,6 +32,25 @@ ul {
   background: #ffeff4;
   border: solid 1px #84123a;
   border-radius: 10px;
+}
+
+table {
+  margin: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 20px;
+  margin: 20px;
+  border: solid 1px #000;
+  font-weight: 900;
+}
+
+td {
+  padding: 20px;
+  margin: 20px;
+  border: solid 1px #000;
+  font-weight: 100;
 }
 
 ul:hover {
