@@ -120,25 +120,41 @@ header p {
 #about {
   background: #ad3535;
   color: #ffeae5;
-  padding: 60px 100px;
+  padding: 80px 100px;
+}
+
+#imageP {
+  text-align: center;
+}
+
+#cookieimage {
+  display: inline;
+  width: 23%;
+  height: auto;
+  opacity: 0.7;
+  border: solid 1px #FFF;
+}
+
+#cookieimage:hover {
+  opacity: 1.0;
 }
 
 #locations {
   background: #ffc8bf;
-  color: #c94c30;
-  padding: 60px 100px;
+  color: #aa2700;
+  padding: 80px 100px;
 }
 
 #contact {
   background: #FFF;
-  color: #aa2700;
-  padding: 60px 100px;
+  color: #c94c30;
+  padding: 80px 100px;
 }
 
 #testimonials {
   background: #ad3535;
   color: #ffeae5;
-  padding: 60px 100px;
+  padding: 80px 100px;
 }
 
 h2 {
