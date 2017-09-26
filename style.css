@@ -125,7 +125,7 @@ header p {
 #about {
   background: #ad3535;
   color: #ffeae5;
-  padding: 60px 100px;
+  padding: 80px 100px;
 }
 
 #imageP {
@@ -147,22 +147,33 @@ header p {
 #locations {
   background: #ffc8bf;
   color: #aa2700;
-  padding: 60px 100px;
+  padding: 80px 100px;
 }
 
-#locationsP {
+.locationsDiv {
+  margin: auto;
   text-align: center;
 }
 
 .loc {
+  display: inline-block;
   width: 45%;
-  margin: 10px;
-  padding: 20px 10px;
+  margin: 10px 5px;
+  padding: 40px 10px;
   border: solid 1px #aa2700;
   border-radius: 5px;
   background: #ffdbd6;
   text-align: center;
-  float: left;
+  max-width: 450px;
+}
+
+.emptyloc {
+  display: inline-block;
+  width: 45%;
+  margin: 10px 5px;
+  padding: 40px 10px;
+  border: 0px;
+  max-width: 450px;
 }
 
 .loc:hover {
@@ -178,13 +189,31 @@ header p {
 #contact {
   background: #FFF;
   color: #c94c30;
-  padding: 60px 100px;
+  padding: 80px 100px;
+  letter-spacing: 0.1em;
+}
+
+#contact a {
+  text-decoration: none;
+  color: #aa2700;
+  font-weight: 400;
+}
+
+#contact a:hover {
+  color: #d65437;
+  cursor: default;
+}
+
+#contact p {
+  font-size: 1.5em;
+  line-height: 2em;
+  text-align: center;
 }
 
 #testimonials {
   background: #ad3535;
   color: #ffeae5;
-  padding: 60px 100px;
+  padding: 80px 100px;
 }
 
 q {
@@ -196,6 +225,8 @@ q {
 
 q:hover {
   color: #ffeae5;
+  background: #c14747;
+  cursor: default;
 }
 
 h2 {
