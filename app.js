@@ -1,5 +1,6 @@
 'use strict';
 
+var i;
 var arrayOfHoursOpen = [
   '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM'
 ];
@@ -19,6 +20,14 @@ var locSeaTacAirport = new PatsSalmonCookiesStore('SeaTac Airport', 'locSeaTacAi
 var locSeattleCenter = new PatsSalmonCookiesStore('Seattle Center', 'locSeattleCenter', 11, 38, 3.7);
 var locCapitolHill = new PatsSalmonCookiesStore('Capitol Hill', 'locCapitolHill', 20, 38, 2.3);
 var locAlki = new PatsSalmonCookiesStore('Alki', 'locAlki', 2, 16, 4.6);
+
+var arrayOfStoreLocations = [
+  locFirstAndPike,
+  locSeaTacAirport,
+  locSeattleCenter,
+  locCapitolHill,
+  locAlki
+];
 
 PatsSalmonCookiesStore.prototype.randomNumCustPerHr = function() {
   return Math.floor(Math.random() * (this.maxCustPerHr - this.minCustPerHr + 1) + this.minCustPerHr);
@@ -73,15 +82,14 @@ PatsSalmonCookiesStore.prototype.renderCookiesSold = function() {
 })();
 
 // Generate Table Body - always call table body before the table footer
-locFirstAndPike.renderCookiesSold();
-locSeaTacAirport.renderCookiesSold();
-locSeattleCenter.renderCookiesSold();
-locCapitolHill.renderCookiesSold();
-locAlki.renderCookiesSold();
+
+for (i in arrayOfStoreLocations) {
+  arrayOfStoreLocations[i].renderCookiesSold();
+}
 
 // Generate Table Footer
 (function () {
-  var thEl, thTextNode, thTdPos, tdEl, tdTextNode, i;
+  var thEl, thTextNode, thTdPos, tdEl, tdTextNode, i, j, calcTotal;
   var hourTotal = 0;
   var total = 0;
 
@@ -91,15 +99,18 @@ locAlki.renderCookiesSold();
   thTdPos = document.querySelector('tfoot').firstChild;
   thTdPos.appendChild(thEl);
 
-  for (i in arrayOfHoursOpen) {
-    hourTotal = locFirstAndPike.cookiesSoldPerHr[i] + locSeaTacAirport.cookiesSoldPerHr[i] + locSeattleCenter.cookiesSoldPerHr[i] + locCapitolHill.cookiesSoldPerHr[i] + locAlki.cookiesSoldPerHr[i];
 
+  for (i in arrayOfHoursOpen) {
+    for (j in arrayOfStoreLocations) {
+      hourTotal += arrayOfStoreLocations[j].cookiesSoldPerHr[i];
+    }
     tdEl = document.createElement('td');
     tdTextNode = document.createTextNode(hourTotal);
     tdEl.appendChild(tdTextNode);
     thTdPos.appendChild(tdEl);
-
-    total += hourTotal;
+    calcTotal = hourTotal;
+    total += calcTotal;
+    hourTotal = 0;
   }
 
   tdEl = document.createElement('td');
