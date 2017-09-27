@@ -10,6 +10,31 @@
     <div id="content">
       <h1>Daily Sales Projections - Pat's Salmon Cookies</h1>
 
+      <form id="addLocation">
+        <fieldset>
+          <legend>Add Location</legend>
+
+          <label for="locId">Location ID: </label>
+          <input name="locId" type="text" />
+
+          <label for="locName">Location Name: </label>
+          <input name="locName" type="text" />
+
+          <label for="minCust">Min # Customers Per Hour: </label>
+          <input name="minCust" type="text" maxlength="3" />
+
+          <label for="maxCust">Max # Customers Per Hour: </label>
+          <input name="maxCust" type="text" maxlength="3" />
+
+          <label for="avgCookies">Average # Cookies Per Sale: </label>
+          <input name="avgCookies" type="text" maxlength="4" />
+
+          <button type="submit">Add Location</button>
+
+          <p id="formValidation"></p>
+        </fieldset>
+      </form>
+
       <table id="projectedSales">
         <thead><tr><th></th></tr></thead>
         <tbody></tbody>

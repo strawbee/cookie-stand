@@ -14,7 +14,7 @@ body {
 
 #content {
   position: fixed;
-  background: linear-gradient(#ffedcc, #ff9e8c);
+  background: linear-gradient(#ff9e8c, #ffedcc);
   top: 0;
   left: 0;
   height: 100%;
