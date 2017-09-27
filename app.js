@@ -1,5 +1,9 @@
 'use strict';
 
+var arrayOfHoursOpen = [
+  '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM'
+];
+
 // Constructor Function for Pat's Salmon Cookies stores
 function PatsSalmonCookiesStore(name, id, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
   this.name = name;
@@ -15,24 +19,6 @@ var locSeaTacAirport = new PatsSalmonCookiesStore('SeaTac Airport', 'locSeaTacAi
 var locSeattleCenter = new PatsSalmonCookiesStore('Seattle Center', 'locSeattleCenter', 11, 38, 3.7);
 var locCapitolHill = new PatsSalmonCookiesStore('Capitol Hill', 'locCapitolHill', 20, 38, 2.3);
 var locAlki = new PatsSalmonCookiesStore('Alki', 'locAlki', 2, 16, 4.6);
-
-var arrayOfHoursOpen = [
-  '6AM', // 0
-  '7AM', // 1
-  '8AM', // 2
-  '9AM', // 3
-  '10AM', // 4
-  '11AM', // 5
-  '12AM', // 6
-  '1PM', // 7
-  '2PM', // 8
-  '3PM', // 9
-  '4PM', // 10
-  '5PM', // 11
-  '6PM', // 12
-  '7PM', // 13
-  '8PM' // 14
-];
 
 PatsSalmonCookiesStore.prototype.randomNumCustPerHr = function() {
   return Math.floor(Math.random() * (this.maxCustPerHr - this.minCustPerHr + 1) + this.minCustPerHr);
@@ -76,7 +62,7 @@ PatsSalmonCookiesStore.prototype.renderCookiesSold = function() {
     thEl = document.createElement('th');
     thTextNode = document.createTextNode(arrayOfHoursOpen[i]);
     thEl.appendChild(thTextNode);
-    thPos = document.querySelector('tr');
+    thPos = document.querySelector('thead').lastChild;
     thPos.appendChild(thEl);
   }
 
