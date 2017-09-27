@@ -6,20 +6,19 @@ var arrayOfHoursOpen = [
 ];
 
 // Constructor Function for Pat's Salmon Cookies stores
-function PatsSalmonCookiesStore(name, id, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
+function PatsSalmonCookiesStore(name, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
   this.name = name;
-  this.id = id;
   this.minCustPerHr = minCustPerHr;
   this.maxCustPerHr = maxCustPerHr;
   this.avgCookiesPerSale = avgCookiesPerSale;
   this.cookiesSoldPerHr = [];
 }
 
-var locFirstAndPike = new PatsSalmonCookiesStore('First and Pike', 'locFirstAndPike', 23, 65, 6.3);
-var locSeaTacAirport = new PatsSalmonCookiesStore('SeaTac Airport', 'locSeaTacAirport', 3, 24, 1.2);
-var locSeattleCenter = new PatsSalmonCookiesStore('Seattle Center', 'locSeattleCenter', 11, 38, 3.7);
-var locCapitolHill = new PatsSalmonCookiesStore('Capitol Hill', 'locCapitolHill', 20, 38, 2.3);
-var locAlki = new PatsSalmonCookiesStore('Alki', 'locAlki', 2, 16, 4.6);
+var locFirstAndPike = new PatsSalmonCookiesStore('First and Pike', 23, 65, 6.3);
+var locSeaTacAirport = new PatsSalmonCookiesStore('SeaTac Airport', 3, 24, 1.2);
+var locSeattleCenter = new PatsSalmonCookiesStore('Seattle Center', 11, 38, 3.7);
+var locCapitolHill = new PatsSalmonCookiesStore('Capitol Hill', 20, 38, 2.3);
+var locAlki = new PatsSalmonCookiesStore('Alki', 2, 16, 4.6);
 
 var arrayOfStoreLocations = [
   locFirstAndPike,
@@ -89,7 +88,7 @@ for (i in arrayOfStoreLocations) {
 
 // Generate Table Footer
 (function () {
-  var thEl, thTextNode, thTdPos, tdEl, tdTextNode, i, j, calcTotal;
+  var thEl, thTextNode, thTdPos, tdEl, tdTextNode, i, j;
   var hourTotal = 0;
   var total = 0;
 
@@ -99,7 +98,6 @@ for (i in arrayOfStoreLocations) {
   thTdPos = document.querySelector('tfoot').firstChild;
   thTdPos.appendChild(thEl);
 
-
   for (i in arrayOfHoursOpen) {
     for (j in arrayOfStoreLocations) {
       hourTotal += arrayOfStoreLocations[j].cookiesSoldPerHr[i];
@@ -108,8 +106,7 @@ for (i in arrayOfStoreLocations) {
     tdTextNode = document.createTextNode(hourTotal);
     tdEl.appendChild(tdTextNode);
     thTdPos.appendChild(tdEl);
-    calcTotal = hourTotal;
-    total += calcTotal;
+    total += hourTotal;
     hourTotal = 0;
   }
 
