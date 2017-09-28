@@ -136,7 +136,6 @@ function addLocation(event) {
     for (i = 0; i < arrayOfStoreLocations.length; i++) {
       thisStore = arrayOfStoreLocations[i];
       if (locId === thisStore.id) {
-        addLocValidation.textContent = 'We should modify shit.';
         thisStore.name = locName;
         thisStore.minCustPerHr = minCust;
         thisStore.maxCustPerHr = maxCust;
@@ -191,7 +190,7 @@ function displayLocationIds() {
   var i;
   for (i in arrayOfStoreLocations) {
     stringOfStoreIds = document.getElementById('arrayOfStoreLocations');
-    stringOfStoreIds.textContent += arrayOfStoreLocations[i].id + ' ';
+    stringOfStoreIds.innerHTML += '<br />' + arrayOfStoreLocations[i].id + '<br />';
   }
 }
 
