@@ -1,6 +1,6 @@
 'use strict';
 
-var x;
+var x, stringOfStoreIds;
 
 // Constructor Function for Pat's Salmon Cookies stores
 function PatsSalmonCookiesStore(id, name, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
@@ -117,7 +117,7 @@ function addLocation(event) {
   var avgCookies = Math.round(avgCookiesRaw);
   var addLocValidation = document.getElementById('addLocValidation');
   var total = 0;
-  var i, newLocation, thisStore, trEl, cookiesSold, thEl, thTextNode, stringOfStoreIds;
+  var i, newLocation, thisStore, trEl, cookiesSold, thEl, thTextNode;
 
   // Form Validation
   if (!locId || !locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
