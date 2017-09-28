@@ -1,9 +1,6 @@
 'use strict';
 
-var x, stringOfStoreIds;
-var arrayOfHoursOpen = [
-  '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'
-];
+var x;
 
 // Constructor Function for Pat's Salmon Cookies stores
 function PatsSalmonCookiesStore(id, name, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
@@ -14,6 +11,8 @@ function PatsSalmonCookiesStore(id, name, minCustPerHr, maxCustPerHr, avgCookies
   this.avgCookiesPerSale = avgCookiesPerSale;
   this.cookiesSoldPerHr = [];
 }
+
+PatsSalmonCookiesStore.hours = ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
 
 var locFirstAndPike = new PatsSalmonCookiesStore('locFirstAndPike', 'First and Pike', 23, 65, 6.3);
 var locSeaTacAirport = new PatsSalmonCookiesStore('locSeaTacAirport', 'SeaTac Airport', 3, 24, 1.2);
@@ -50,7 +49,7 @@ PatsSalmonCookiesStore.prototype.renderCookiesSold = function() {
   thTdPos = trPos.lastChild;
   thTdPos.appendChild(thEl);
 
-  for (i in arrayOfHoursOpen) {
+  for (i in PatsSalmonCookiesStore.hours) {
     cookiesSoldPerHr[i] = Math.round(this.avgCookiesPerSale * this.randomNumCustPerHr());
     tdEl = document.createElement('td');
     tdTextNode = document.createTextNode(cookiesSoldPerHr[i]);
@@ -77,7 +76,7 @@ function renderTableFooter() {
   thTdPos = document.querySelector('tfoot').firstChild;
   thTdPos.appendChild(thEl);
 
-  for (i in arrayOfHoursOpen) {
+  for (i in PatsSalmonCookiesStore.hours) {
     for (j in arrayOfStoreLocations) {
       hourTotal += arrayOfStoreLocations[j].cookiesSoldPerHr[i];
     }
@@ -118,7 +117,7 @@ function addLocation(event) {
   var avgCookies = Math.round(avgCookiesRaw);
   var addLocValidation = document.getElementById('addLocValidation');
   var total = 0;
-  var i, newLocation, thisStore, trEl, cookiesSold, thEl, thTextNode;
+  var i, newLocation, thisStore, trEl, cookiesSold, thEl, thTextNode, stringOfStoreIds;
 
   // Form Validation
   if (!locId || !locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
@@ -153,7 +152,7 @@ function addLocation(event) {
         thEl.appendChild(thTextNode);
         trEl.appendChild(thEl);
 
-        for (i in arrayOfHoursOpen) {
+        for (i in PatsSalmonCookiesStore.hours) {
           cookiesSold = thisStore.cookiesSoldPerHr;
           cookiesSold[i] = Math.round(avgCookies * thisStore.randomNumCustPerHr());
           var tdEl = document.createElement('td');
@@ -197,9 +196,9 @@ function displayLocationIds() {
 // Generate Table Head
 (function () {
   var thEl, thTextNode, thPos, i;
-  for (i in arrayOfHoursOpen) {
+  for (i in PatsSalmonCookiesStore.hours) {
     thEl = document.createElement('th');
-    thTextNode = document.createTextNode(arrayOfHoursOpen[i]);
+    thTextNode = document.createTextNode(PatsSalmonCookiesStore.hours[i]);
     thEl.appendChild(thTextNode);
     thPos = document.querySelector('thead').lastChild;
     thPos.appendChild(thEl);
