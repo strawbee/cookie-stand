@@ -9,29 +9,36 @@
   <body>
     <div id="content">
       <h1>Daily Sales Projections - Pat's Salmon Cookies</h1>
+      <p id="instructions">
+        Welcome to the sales projections page. You can add new locations or modify locations by the Location ID. Existing location IDs are: <br />
+        <span id="arrayOfStoreLocations"></span>.
+      </p>
 
       <form id="addLocation">
         <fieldset>
-          <legend>Add Location</legend>
-
-          <label for="locId">Location ID: </label>
-          <input name="locId" type="text" />
-
-          <label for="locName">Location Name: </label>
-          <input name="locName" type="text" />
-
-          <label for="minCust">Min # Customers Per Hour: </label>
-          <input name="minCust" type="text" maxlength="3" />
-
-          <label for="maxCust">Max # Customers Per Hour: </label>
-          <input name="maxCust" type="text" maxlength="3" />
-
-          <label for="avgCookies">Average # Cookies Per Sale: </label>
-          <input name="avgCookies" type="text" maxlength="4" />
-
-          <button type="submit">Add Location</button>
-
-          <p id="formValidation"></p>
+          <legend>Add or Modify Location</legend>
+          <p>
+            <label for="locId">Location ID: </label><br />
+            <input name="locId" type="text" required />
+          </p>
+          <p>
+            <label for="locName">Location Name: </label><br />
+            <input name="locName" type="text" required />
+          </p>
+          <p>
+            <label for="minCust">Min # Customers Per Hour: </label><br />
+            <input name="minCust" type="text" maxlength="3" required />
+          </p>
+          <p>
+            <label for="maxCust">Max # Customers Per Hour: </label><br />
+            <input name="maxCust" type="text" maxlength="3" required />
+          </p>
+          <p>
+            <label for="avgCookies">Average # Cookies Per Sale: </label><br />
+            <input name="avgCookies" type="text" maxlength="4" required />
+          </p>
+          <p id="submitP"><button type="submit" id="submitButton">Add/Modify</button></p>
+          <p id="addLocValidation"></p>
         </fieldset>
       </form>
 
@@ -40,6 +47,7 @@
         <tbody></tbody>
         <tfoot><tr></tr></tfoot>
       </table>
+
     </div>
     <script src="app.js"></script>
   </body>

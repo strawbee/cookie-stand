@@ -1,12 +1,13 @@
 'use strict';
 
-var i;
+var x, stringOfStoreIds;
 var arrayOfHoursOpen = [
   '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'
 ];
 
 // Constructor Function for Pat's Salmon Cookies stores
 function PatsSalmonCookiesStore(id, name, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
+  this.id = id;
   this.name = name;
   this.minCustPerHr = minCustPerHr;
   this.maxCustPerHr = maxCustPerHr;
@@ -32,13 +33,14 @@ PatsSalmonCookiesStore.prototype.randomNumCustPerHr = function() {
   return Math.floor(Math.random() * (this.maxCustPerHr - this.minCustPerHr + 1) + this.minCustPerHr);
 };
 
-// Method to Generate Table Body
+// Method to Render Table Body
 PatsSalmonCookiesStore.prototype.renderCookiesSold = function() {
   var trEl, trPos, thEl, thTextNode, tdEl, thTdPos, tdTextNode, i;
   var total = 0;
   var cookiesSoldPerHr = this.cookiesSoldPerHr;
 
   trEl = document.createElement('tr');
+  trEl.setAttribute('id', this.id);
   trPos = document.querySelector('tbody');
   trPos.appendChild(trEl);
 
@@ -103,6 +105,96 @@ function removeTableFooter() {
   }
 }
 
+// Function to Add New Store
+function addLocation(event) {
+  event.preventDefault();
+  var locId = event.target.locId.value;
+  var locName = event.target.locName.value;
+  var minCustRaw = event.target.minCust.value;
+  var minCust = Math.round(minCustRaw);
+  var maxCustRaw = event.target.maxCust.value;
+  var maxCust = Math.round(maxCustRaw);
+  var avgCookiesRaw = event.target.avgCookies.value;
+  var avgCookies = Math.round(avgCookiesRaw);
+  var addLocValidation = document.getElementById('addLocValidation');
+  var total = 0;
+  var i, newLocation, thisStore, trEl, cookiesSold, thEl, thTextNode;
+
+  // Form Validation
+  if (!locId || !locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
+    addLocValidation.textContent = 'Please fill in all fields.';
+  }
+  else if (isNaN(minCustRaw) || isNaN(maxCustRaw) || isNaN(avgCookiesRaw)) {
+    addLocValidation.textContent = 'Minimum customers, maximum custoners, and average number of cookies should be numbers.';
+  }
+  else if (locId.indexOf(' ') >= 0) {
+    addLocValidation.textContent = 'Location ID cannot have spaces.';
+  }
+
+  else {
+    // Check if Location Already Exists. If so, modifies the store data.
+    for (i = 0; i < arrayOfStoreLocations.length; i++) {
+      thisStore = arrayOfStoreLocations[i];
+      if (locId === thisStore.id) {
+        addLocValidation.textContent = 'We should modify shit.';
+        thisStore.name = locName;
+        thisStore.minCustPerHr = minCust;
+        thisStore.maxCustPerHr = maxCust;
+        thisStore.avgCookiesPerSale = avgCookies;
+
+        // Remove Store to Modify
+        trEl = document.getElementById(thisStore.id);
+        while (trEl.firstChild) {
+          trEl.removeChild(trEl.firstChild);
+        }
+
+        // Add Modified Store
+        thEl = document.createElement('th');
+        thTextNode = document.createTextNode(thisStore.name);
+        thEl.appendChild(thTextNode);
+        trEl.appendChild(thEl);
+
+        for (i in arrayOfHoursOpen) {
+          cookiesSold = thisStore.cookiesSoldPerHr;
+          cookiesSold[i] = Math.round(avgCookies * thisStore.randomNumCustPerHr());
+          var tdEl = document.createElement('td');
+          var tdTextNode = document.createTextNode(cookiesSold[i]);
+          tdEl.appendChild(tdTextNode);
+          trEl.appendChild(tdEl);
+          total += cookiesSold[i];
+        }
+
+        tdEl = document.createElement('td');
+        tdTextNode = document.createTextNode(total);
+        tdEl.appendChild(tdTextNode);
+        trEl.appendChild(tdEl);
+
+        removeTableFooter();
+        renderTableFooter();
+
+        return;
+      }
+    }
+    // If location doesn't exist, adds the store data.
+    newLocation = new PatsSalmonCookiesStore(locId, locName, minCust, maxCust, avgCookies);
+    arrayOfStoreLocations.push(newLocation);
+    newLocation.renderCookiesSold();
+    removeTableFooter();
+    renderTableFooter();
+    stringOfStoreIds.textContent = '';
+    displayLocationIds();
+  }
+}
+
+// Function To Display Location IDs
+function displayLocationIds() {
+  var i;
+  for (i in arrayOfStoreLocations) {
+    stringOfStoreIds = document.getElementById('arrayOfStoreLocations');
+    stringOfStoreIds.textContent += arrayOfStoreLocations[i].id + ' ';
+  }
+}
+
 // Generate Table Head
 (function () {
   var thEl, thTextNode, thPos, i;
@@ -120,46 +212,13 @@ function removeTableFooter() {
   thPos.appendChild(thEl);
 })();
 
-// Generate Table Body - always call table body before the table footer
-
-for (i in arrayOfStoreLocations) {
-  arrayOfStoreLocations[i].renderCookiesSold();
+// Generate Table Body and Footer
+for (x in arrayOfStoreLocations) {
+  arrayOfStoreLocations[x].renderCookiesSold();
 }
 renderTableFooter();
 
-
-// Function to Add New Store
-function addLocation(event) {
-  event.preventDefault();
-  var locId = event.target.locId.value;
-  var locName = event.target.locName.value;
-  var minCustRaw = event.target.minCust.value;
-  var minCust = Math.round(minCustRaw);
-  var maxCustRaw = event.target.maxCust.value;
-  var maxCust = Math.round(maxCustRaw);
-  var avgCookiesRaw = event.target.avgCookies.value;
-  var avgCookies = Math.round(avgCookiesRaw);
-  var formValidation = document.getElementById('formValidation');
-
-  // Form Validation
-  if (!locId || !locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
-    formValidation.textContent = 'Please fill in all fields.';
-  }
-  else if (isNaN(minCustRaw) || isNaN(maxCustRaw) || isNaN(avgCookiesRaw)) {
-    formValidation.textContent = 'Minimum customers, maximum custoners, and average number of cookies should be numbers.';
-  }
-
-
-  else {
-    // Add New Location to Table
-    var newLocation = new PatsSalmonCookiesStore(locId, locName, minCust, maxCust, avgCookies);
-    arrayOfStoreLocations.push(newLocation);
-    newLocation.renderCookiesSold();
-
-    removeTableFooter();
-    renderTableFooter();
-  }
-}
-
+// Etc.
+displayLocationIds();
 var addLoc = document.getElementById('addLocation');
 addLoc.addEventListener('submit', addLocation);
