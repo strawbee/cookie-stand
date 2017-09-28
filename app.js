@@ -190,7 +190,7 @@ function displayLocationIds() {
   var i;
   for (i in arrayOfStoreLocations) {
     stringOfStoreIds = document.getElementById('arrayOfStoreLocations');
-    stringOfStoreIds.textContent += arrayOfStoreLocations[i].id + ' ';
+    stringOfStoreIds.innerHTML += '<br />' + arrayOfStoreLocations[i].id + '<br />';
   }
 }
 
