@@ -12,22 +12,7 @@ body {
   font-size: 13px;
 }
 
-#wrapper {
-  position: fixed;
-  background: linear-gradient(#ff9e8c, #ffedcc);
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  overflow: scroll;
-}
 
-#content {
-  width: 1040px;
-  padding: 10px;
-  position: relative;
-  margin: auto;
-}
 
 h1 {
   color: #FFF;
@@ -85,10 +70,6 @@ td {
   font-weight: 100;
 }
 
-#projectedSales {
-  float: left;
-}
-
 fieldset {
   background: #ffd5c6;
   border: solid 1px #b73922;
@@ -114,12 +95,6 @@ legend {
   border-radius: 5px;
 }
 
-#addLocValidation {
-  margin-top: 10px;
-  font-weight: 900;
-  line-height: 1.2em;
-}
-
 input {
   margin: 6px;
 }
@@ -135,6 +110,34 @@ input[type=text] {
 
 input[type=text]:focus {
   background: #feffce;
+}
+
+#wrapper {
+  position: fixed;
+  background: linear-gradient(#ff9e8c, #ffedcc);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+#content {
+  width: 1040px;
+  padding: 10px;
+  position: relative;
+  margin: auto;
+}
+
+
+#projectedSales {
+  float: left;
+}
+
+#addLocValidation {
+  margin-top: 10px;
+  font-weight: 900;
+  line-height: 1.2em;
 }
 
 #submitP {
