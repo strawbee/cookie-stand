@@ -115,7 +115,7 @@ function addLocation(event) {
   if (!locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
     addLocValidation.textContent = 'Please fill in all fields.';
   }
-  else if (isNaN(minCustRaw) || isNaN(maxCustRaw) || isNaN(avgCookiesRaw) || minCust < 0 || maxCust < 0) {
+  else if (isNaN(minCustRaw) || isNaN(maxCustRaw) || isNaN(avgCookiesRaw) || minCust < 0 || maxCust < 0 || avgCookies < 1) {
     addLocValidation.textContent = 'Minimum customers, maximum customers, and average number of cookies should be positive numbers.';
   }
   else if (minCust > maxCust) {
