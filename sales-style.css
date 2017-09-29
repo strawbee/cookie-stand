@@ -42,7 +42,6 @@ h1 {
 p {
   color: #b73922;
   margin: 10px;
-  text-align: center;
 }
 
 table {
@@ -91,16 +90,16 @@ td {
 }
 
 fieldset {
-  display: inline-block;
   background: #ffd5c6;
   border: solid 1px #b73922;
-  padding: 25px;
-  font-size: 0.9em;
+  padding: 15px 25px;
   border-radius: 5px;
   opacity: 0.8;
-  float: left;
-  margin: 10px;
+  margin: 10px auto;
   box-shadow: -2px -2px 2px #d6925e;
+  text-align: left;
+  line-height: 3em;
+  width: 450px;
 }
 
 fieldset:hover {
@@ -118,6 +117,7 @@ legend {
 #addLocValidation {
   margin-top: 10px;
   font-weight: 900;
+  line-height: 1.2em;
 }
 
 input {
@@ -130,6 +130,7 @@ input[type=text] {
   border: solid 2px;
   border-radius: 5px;
   outline: none;
+  float: right;
 }
 
 input[type=text]:focus {
@@ -147,25 +148,4 @@ input[type=text]:focus {
   border: solid 2px;
   border-radius: 5px;
   margin: 10px 10px 0 10px;
-}
-
-#arrayOfStoreLocations {
-  font-size: 1.2em;
-  font-weight: 900;
-}
-
-#instructions {
-  display: inline-block;
-  border: solid 1px;
-  background: #FFF;
-  padding: 10px;
-  margin: 30px 0 0 0;
-  opacity: 0.9;
-  line-height: 1.5em;
-  box-shadow: -2px -2px 2px #d6925e;
-  width: 730px;
-}
-
-#instructions:hover {
-  opacity: 1.0;
 }

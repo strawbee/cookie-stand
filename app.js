@@ -1,32 +1,25 @@
 'use strict';
 
-var x, stringOfStoreIds;
+PatsSalmonCookiesStore.locations = [];
 
 // Constructor Function for Pat's Salmon Cookies stores
-function PatsSalmonCookiesStore(id, name, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
-  this.id = id;
+function PatsSalmonCookiesStore(name, minCustPerHr, maxCustPerHr, avgCookiesPerSale) {
   this.name = name;
   this.minCustPerHr = minCustPerHr;
   this.maxCustPerHr = maxCustPerHr;
   this.avgCookiesPerSale = avgCookiesPerSale;
   this.cookiesSoldPerHr = [];
+  this.id = this.name.replace(/\s/g, '');
+  PatsSalmonCookiesStore.locations.push(this);
 }
 
 PatsSalmonCookiesStore.hours = ['6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12AM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM'];
 
-var locFirstAndPike = new PatsSalmonCookiesStore('locFirstAndPike', 'First and Pike', 23, 65, 6.3);
-var locSeaTacAirport = new PatsSalmonCookiesStore('locSeaTacAirport', 'SeaTac Airport', 3, 24, 1.2);
-var locSeattleCenter = new PatsSalmonCookiesStore('locSeattleCenter', 'Seattle Center', 11, 38, 3.7);
-var locCapitolHill = new PatsSalmonCookiesStore('locCapitolHill', 'Capitol Hill', 20, 38, 2.3);
-var locAlki = new PatsSalmonCookiesStore('locAlki', 'Alki', 2, 16, 4.6);
-
-var arrayOfStoreLocations = [
-  locFirstAndPike,
-  locSeaTacAirport,
-  locSeattleCenter,
-  locCapitolHill,
-  locAlki
-];
+var locFirstAndPike = new PatsSalmonCookiesStore('First and Pike', 23, 65, 6.3);
+var locSeaTacAirport = new PatsSalmonCookiesStore('SeaTac Airport', 3, 24, 1.2);
+var locSeattleCenter = new PatsSalmonCookiesStore('Seattle Center', 11, 38, 3.7);
+var locCapitolHill = new PatsSalmonCookiesStore('Capitol Hill', 20, 38, 2.3);
+var locAlki = new PatsSalmonCookiesStore('Alki', 2, 16, 4.6);
 
 PatsSalmonCookiesStore.prototype.randomNumCustPerHr = function() {
   return Math.floor(Math.random() * (this.maxCustPerHr - this.minCustPerHr + 1) + this.minCustPerHr);
@@ -77,8 +70,8 @@ function renderTableFooter() {
   thTdPos.appendChild(thEl);
 
   for (i in PatsSalmonCookiesStore.hours) {
-    for (j in arrayOfStoreLocations) {
-      hourTotal += arrayOfStoreLocations[j].cookiesSoldPerHr[i];
+    for (j in PatsSalmonCookiesStore.locations) {
+      hourTotal += PatsSalmonCookiesStore.locations[j].cookiesSoldPerHr[i];
     }
     tdEl = document.createElement('td');
     tdTextNode = document.createTextNode(hourTotal);
@@ -107,7 +100,6 @@ function removeTableFooter() {
 // Function to Add New Store
 function addLocation(event) {
   event.preventDefault();
-  var locId = event.target.locId.value;
   var locName = event.target.locName.value;
   var minCustRaw = event.target.minCust.value;
   var minCust = Math.round(minCustRaw);
@@ -120,22 +112,21 @@ function addLocation(event) {
   var i, newLocation, thisStore, trEl, cookiesSold, thEl, thTextNode;
 
   // Form Validation
-  if (!locId || !locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
+  if (!locName || !minCustRaw || !maxCustRaw || !avgCookiesRaw) {
     addLocValidation.textContent = 'Please fill in all fields.';
   }
-  else if (isNaN(minCustRaw) || isNaN(maxCustRaw) || isNaN(avgCookiesRaw)) {
-    addLocValidation.textContent = 'Minimum customers, maximum custoners, and average number of cookies should be numbers.';
+  else if (isNaN(minCustRaw) || isNaN(maxCustRaw) || isNaN(avgCookiesRaw) || minCust < 0 || maxCust < 0) {
+    addLocValidation.textContent = 'Minimum customers, maximum customers, and average number of cookies should be positive numbers.';
   }
-  else if (locId.indexOf(' ') >= 0) {
-    addLocValidation.textContent = 'Location ID cannot have spaces.';
+  else if (minCust > maxCust) {
+    addLocValidation.textContent = 'Minimum number must be smaller than maximum number of customers.';
   }
 
   else {
     // Check if Location Already Exists. If so, modifies the store data.
-    for (i = 0; i < arrayOfStoreLocations.length; i++) {
-      thisStore = arrayOfStoreLocations[i];
-      if (locId === thisStore.id) {
-        thisStore.name = locName;
+    for (i = 0; i < PatsSalmonCookiesStore.locations.length; i++) {
+      thisStore = PatsSalmonCookiesStore.locations[i];
+      if (locName.toUpperCase() === thisStore.name.toUpperCase()) {
         thisStore.minCustPerHr = minCust;
         thisStore.maxCustPerHr = maxCust;
         thisStore.avgCookiesPerSale = avgCookies;
@@ -174,22 +165,11 @@ function addLocation(event) {
       }
     }
     // If location doesn't exist, adds the store data.
-    newLocation = new PatsSalmonCookiesStore(locId, locName, minCust, maxCust, avgCookies);
-    arrayOfStoreLocations.push(newLocation);
+    newLocation = new PatsSalmonCookiesStore(locName, minCust, maxCust, avgCookies);
     newLocation.renderCookiesSold();
     removeTableFooter();
     renderTableFooter();
-    stringOfStoreIds.textContent = '';
     displayLocationIds();
-  }
-}
-
-// Function To Display Location IDs
-function displayLocationIds() {
-  var i;
-  for (i in arrayOfStoreLocations) {
-    stringOfStoreIds = document.getElementById('arrayOfStoreLocations');
-    stringOfStoreIds.innerHTML += '<br />' + arrayOfStoreLocations[i].id + '<br />';
   }
 }
 
@@ -211,12 +191,11 @@ function displayLocationIds() {
 })();
 
 // Generate Table Body and Footer
-for (x in arrayOfStoreLocations) {
-  arrayOfStoreLocations[x].renderCookiesSold();
+for (var x in PatsSalmonCookiesStore.locations) {
+  PatsSalmonCookiesStore.locations[x].renderCookiesSold();
 }
 renderTableFooter();
 
 // Etc.
-displayLocationIds();
 var addLoc = document.getElementById('addLocation');
 addLoc.addEventListener('submit', addLocation);
