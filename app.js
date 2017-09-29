@@ -161,6 +161,8 @@ function addLocation(event) {
         removeTableFooter();
         renderTableFooter();
 
+        document.getElementById('addLocation').reset();
+
         return;
       }
     }
@@ -169,6 +171,8 @@ function addLocation(event) {
     newLocation.renderCookiesSold();
     removeTableFooter();
     renderTableFooter();
+
+    document.getElementById('addLocation').reset();
   }
 }
 
