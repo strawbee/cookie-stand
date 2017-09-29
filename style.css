@@ -21,29 +21,19 @@ a {
   color: inherit;
 }
 
-.data {
-  font-family: georgia, serif;
+q {
+  display: block;
+  margin: 10px 0 0 0;
+  font-size: 1.1em;
+  font-weight: 400;
+  line-height: 1.7em;
+  color: #f2dcd7;
 }
 
-nav {
-  text-align: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #FFF;
-  z-index: 1;
-}
-
-#homeimg {
-  display: inline;
-  width: 80px;
-  height: auto;
-  opacity: 0.7;
-  vertical-align: bottom;
-}
-
-#homeimg:hover {
-  opacity: 0.8;
+q:hover {
+  color: #ffeae5;
+  background: #c14747;
+  cursor: default;
 }
 
 ul {
@@ -69,6 +59,45 @@ li a {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 3em;
+  font-family: 'Days One', sans-serif;
+  font-weight: 100;
+  text-align: center;
+  padding: 20px;
+  text-shadow: 2px 2px 2px #d6925e;
+}
+
+h2 {
+  padding: 20px 20px 40px 20px;
+  text-align: center;
+  font-family: Raleway;
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+h2:hover {
+  text-shadow: 2px 2px 2px #d6925e;
+  cursor: default;
+}
+
+h3 {
+  font-weight: 900;
+  line-height: 1.5em;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+}
+
+nav {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #FFF;
+  z-index: 1;
+}
+
 header {
   position: absolute;
   top: 0;
@@ -86,19 +115,82 @@ header {
   z-index: 0;
 }
 
-h1 {
-  font-size: 3em;
-  font-family: 'Days One', sans-serif;
-  font-weight: 100;
-  text-align: center;
-  padding: 20px;
-  text-shadow: 2px 2px 2px #d6925e;
-}
-
 header p {
   font-size: 1.5em;
   font-weight: 100;
   font-family: 'Raleway', sans-serif;
+}
+
+footer {
+  background: #ffe4e0;
+  color: #c94c30;
+  padding: 40px 100px 40px 100px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.patsimages {
+  height: 150px;
+  width: auto;
+  margin: 5px;
+  border: solid 1px #ffc8bf;
+  opacity: 0.6;
+}
+
+.patsimages:hover {
+  opacity: 1.0;
+  box-shadow: 2px 2px 2px #d6925e;
+}
+
+.locationsDiv {
+  margin: auto;
+  text-align: center;
+}
+
+.loc {
+  display: inline-block;
+  width: 45%;
+  margin: 10px 5px;
+  padding: 40px 10px;
+  border: solid 1px #aa2700;
+  border-radius: 5px;
+  background: #ffdbd6;
+  text-align: center;
+  max-width: 450px;
+}
+
+.emptyloc {
+  display: inline-block;
+  width: 45%;
+  margin: 10px 5px;
+  padding: 40px 10px;
+  border: 0px;
+  max-width: 450px;
+}
+
+.loc:hover {
+  background: #ffedea;
+  background: linear-gradient(#ffdecc, #ffedea);
+  box-shadow: 2px 2px 2px #d6925e;
+}
+
+.quoteauthor {
+  margin: 0 0 10px 0;
+  text-align: right;
+  font-style: italic;
+}
+
+#homeimg {
+  display: inline;
+  width: 80px;
+  height: auto;
+  opacity: 0.7;
+  vertical-align: bottom;
+}
+
+#homeimg:hover {
+  opacity: 0.8;
 }
 
 #learnmore {
@@ -142,55 +234,10 @@ header p {
   background: #c14747;
 }
 
-.patsimages {
-  height: 150px;
-  width: auto;
-  margin: 5px;
-  border: solid 1px #ffc8bf;
-  opacity: 0.6;
-}
-
-.patsimages:hover {
-  opacity: 1.0;
-  box-shadow: 2px 2px 2px #d6925e;
-}
-
 #locations {
   background: #ffc8bf;
   color: #aa2700;
   padding: 80px 100px;
-}
-
-.locationsDiv {
-  margin: auto;
-  text-align: center;
-}
-
-.loc {
-  display: inline-block;
-  width: 45%;
-  margin: 10px 5px;
-  padding: 40px 10px;
-  border: solid 1px #aa2700;
-  border-radius: 5px;
-  background: #ffdbd6;
-  text-align: center;
-  max-width: 450px;
-}
-
-.emptyloc {
-  display: inline-block;
-  width: 45%;
-  margin: 10px 5px;
-  padding: 40px 10px;
-  border: 0px;
-  max-width: 450px;
-}
-
-.loc:hover {
-  background: #ffedea;
-  background: linear-gradient(#ffdecc, #ffedea);
-  box-shadow: 2px 2px 2px #d6925e;
 }
 
 #locations::after {
@@ -227,55 +274,4 @@ header p {
   background: #ad3535;
   color: #ffeae5;
   padding: 80px 100px;
-}
-
-q {
-  display: block;
-  margin: 10px 0 0 0;
-  font-size: 1.1em;
-  font-weight: 400;
-  line-height: 1.7em;
-  color: #f2dcd7;
-}
-
-q:hover {
-  color: #ffeae5;
-  background: #c14747;
-  cursor: default;
-}
-
-.quoteauthor {
-  margin: 0 0 10px 0;
-  text-align: right;
-  font-style: italic;
-}
-
-h2 {
-  padding: 20px 20px 40px 20px;
-  text-align: center;
-  font-family: Raleway;
-  font-size: 2em;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-}
-
-h2:hover {
-  text-shadow: 2px 2px 2px #d6925e;
-  cursor: default;
-}
-
-h3 {
-  font-weight: 900;
-  line-height: 1.5em;
-  font-size: 1.2em;
-  letter-spacing: 0.05em;
-}
-
-footer {
-  background: #ffe4e0;
-  color: #c94c30;
-  padding: 40px 100px 40px 100px;
-  text-align: center;
-  font-weight: 400;
-  font-size: 0.9em;
 }
