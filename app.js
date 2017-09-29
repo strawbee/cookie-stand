@@ -169,7 +169,6 @@ function addLocation(event) {
     newLocation.renderCookiesSold();
     removeTableFooter();
     renderTableFooter();
-    displayLocationIds();
   }
 }
 
