@@ -9,36 +9,25 @@
   <body>
     <div id="wrapper">
       <div id="content">
-        <h1>Daily Sales Projections - Pat's Salmon Cookies</h1>
-
-
-        <table id="projectedSales">
-          <thead><tr><th></th></tr></thead>
-          <tbody></tbody>
-          <tfoot><tr></tr></tfoot>
-        </table>
+        <h1>Daily Sales Projections</h1>
 
         <form id="addLocation">
           <fieldset>
             <legend>Add or Modify Location</legend>
             <p>
-              <label for="locId">Location ID: </label><br />
-              <input name="locId" type="text" required />
-            </p>
-            <p>
-              <label for="locName">Location Name: </label><br />
+              <label for="locName">Location Name: </label>
               <input name="locName" type="text" required />
             </p>
             <p>
-              <label for="minCust">Min # Customers Per Hour: </label><br />
+              <label for="minCust">Min # Customers Per Hour: </label>
               <input name="minCust" type="text" maxlength="3" required />
             </p>
             <p>
-              <label for="maxCust">Max # Customers Per Hour: </label><br />
+              <label for="maxCust">Max # Customers Per Hour: </label>
               <input name="maxCust" type="text" maxlength="3" required />
             </p>
             <p>
-              <label for="avgCookies">Average # Cookies Per Sale: </label><br />
+              <label for="avgCookies">Average # Cookies Per Sale: </label>
               <input name="avgCookies" type="text" maxlength="4" required />
             </p>
             <p id="submitP"><button type="submit" id="submitButton">Add/Modify</button></p>
@@ -46,10 +35,12 @@
           </fieldset>
         </form>
 
-        <p id="instructions">
-          Welcome to the sales projections page. You can add new locations or modify locations by the Location ID. Existing location IDs are: <br />
-          <span id="arrayOfStoreLocations"></span>.
-        </p>
+        <table id="projectedSales">
+          <thead><tr><th></th></tr></thead>
+          <tbody></tbody>
+          <tfoot><tr></tr></tfoot>
+        </table>
+
       </div>
     </div>
     <script src="app.js"></script>
